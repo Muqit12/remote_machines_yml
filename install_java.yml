@@ -16,13 +16,15 @@
 
     - name: Set JAVA_HOME environment variable
       win_environment:
-        state: present
         name: JAVA_HOME
-        value: C:\Program Files\Java\jdk-21
-
-    - name: Add JAVA_HOME to PATH
-      win_environment:
+        value: 'C:\Program Files\Java\jdk-21'
+        level: machine
         state: present
-        name: PATH
+
+    - name: Add Java to System PATH
+      win_environment:
+        name: Path
         value: '%JAVA_HOME%\bin'
+        level: machine
+        state: present
         action: append
