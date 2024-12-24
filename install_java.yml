@@ -21,10 +21,13 @@
         level: machine
         state: present
 
-    - name: Add Java to System PATH
+    - name: Get current PATH
+      win_shell: $env:Path
+      register: current_path
+
+    - name: Set updated PATH
       win_environment:
         name: Path
-        value: '%JAVA_HOME%\bin'
+        value: '{{ current_path.stdout }};%JAVA_HOME%\bin'
         level: machine
         state: present
-        action: append
