@@ -1,5 +1,5 @@
 - name: Install Java 21 on Windows machines
-  hosts: windows
+  hosts: all
   tasks:
     - name: Ensure C:\Temp directory exists
       win_file:
