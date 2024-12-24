@@ -1,6 +1,10 @@
 - name: Install Java 21 on Windows machines
   hosts: all
   tasks:
+    - name: Ensure C:\Temp directory exists
+      win_file:
+        path: C:\Temp
+        state: directory
     - name: Download Java 21 installer
       win_get_url:
         url: https://download.oracle.com/java/21/latest/jdk-21_windows-x64_bin.exe
